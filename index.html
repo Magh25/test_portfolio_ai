@@ -1,0 +1,2944 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد عبدالغفار | مطور ويب</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @layer utilities {
+            .nav-link {
+                @apply relative text-gray-700 hover:text-red-600 py-2 text-[15px] font-medium transition-colors duration-300
+                before:absolute before:left-0 before:right-0 before:bottom-0 before:h-0.5 before:bg-red-600
+                before:scale-x-0 before:origin-right before:transition-transform before:duration-300
+                hover:before:scale-x-100 hover:before:origin-left;
+            }
+
+            .nav-button {
+                @apply bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2.5 rounded-full text-[15px]
+                font-medium transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30
+                active:scale-95 whitespace-nowrap;
+            }
+        }
+    </style>
+
+    
+            <!-- أضف هذا في قسم style -->
+            <style>
+                /* التأثيرات الأساسية السابقة */
+                @keyframes float {
+                    0% { transform: translateY(0px); }
+                    50% { transform: translateY(-10px); }
+                    100% { transform: translateY(0px); }
+                }
+    
+                @keyframes spin-slow {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+    
+                @keyframes spin-slow-reverse {
+                    from { transform: rotate(360deg); }
+                    to { transform: rotate(0deg); }
+                }
+    
+                /* تأثيرات جديدة */
+                @keyframes slideInRight {
+                    from {
+                        transform: translateX(100px);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+    
+                @keyframes slideInLeft {
+                    from {
+                        transform: translateX(-100px);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+    
+                @keyframes scaleIn {
+                    from {
+                        transform: scale(0.9);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+    
+                @keyframes gradientMove {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+    
+                @keyframes bounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-20px); }
+                }
+    
+                @keyframes glowPulse {
+                    0% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.2); }
+                    50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+                    100% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.2); }
+                }
+    
+                /* Classes جديدة */
+                .animate-slide-right {
+                    animation: slideInRight 1s ease-out forwards;
+                }
+    
+                .animate-slide-left {
+                    animation: slideInLeft 1s ease-out forwards;
+                }
+    
+                .animate-scale {
+                    animation: scaleIn 0.8s ease-out forwards;
+                }
+    
+                .animate-gradient {
+                    background-size: 200% 200%;
+                    animation: gradientMove 15s ease infinite;
+                }
+    
+                .animate-bounce-slow {
+                    animation: bounce 3s ease-in-out infinite;
+                }
+    
+                .glow-effect {
+                    animation: glowPulse 2s ease-in-out infinite;
+                }
+    
+                .tag-hover {
+                    transition: all 0.3s ease;
+                }
+    
+                .tag-hover:hover {
+                    transform: translateY(-5px) scale(1.05);
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                }
+    
+                /* تأثير الخلفية المتحركة */
+                .animated-background {
+                    position: relative;
+                    overflow: hidden;
+                }
+    
+                .animated-background::before {
+                    content: '';
+                    position: absolute;
+                    top: -50%;
+                    left: -50%;
+                    width: 200%;
+                    height: 200%;
+                    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+                    animation: rotateBackground 20s linear infinite;
+                }
+    
+                @keyframes rotateBackground {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+                @keyframes countUp {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+    
+                .stats-card {
+                    opacity: 0;
+                    animation: countUp 0.6s ease-out forwards;
+                }
+    
+                .progress-bar {
+                    animation: progress 1.5s ease-out forwards;
+                    animation-delay: 0.5s;
+                }
+    
+                @keyframes progress {
+                    from { width: 0; }
+                    to { width: 100%; }
+                }
+            </style>
+    
+    <style>
+        .project-action-btn {
+            @apply w-12 h-12 flex items-center justify-center rounded-xl bg-gray-800 text-gray-400
+                hover:bg-gray-700 hover:text-white transition-colors;
+        }
+
+        .tech-badge {
+            @apply px-3 py-1 rounded-full text-sm bg-gray-800 text-gray-400 hover:bg-gray-700
+                hover:text-white transition-colors;
+        }
+
+        /* Add more custom styles as needed */
+    </style>
+
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category-btn {
+        @apply flex items-center gap-2 px-6 py-3 rounded-xl text-gray-400 bg-gray-900
+            hover:text-white hover:bg-gray-800 transition-all whitespace-nowrap;
+    }
+
+    .category-btn.active {
+        @apply text-white bg-gradient-to-r from-red-500 to-orange-500;
+    }
+
+    /* Add more custom styles as needed */
+</style> 
+<style>
+    .social-link {
+        @apply flex items-center gap-2 px-6 py-3 rounded-xl text-gray-400 bg-gray-900
+            hover:text-white hover:bg-gray-800 transition-all;
+    }
+</style>
+
+<style>
+    .footer-social-link {
+        @apply w-10 h-10 flex items-center justify-center rounded-xl bg-gray-800 text-gray-400
+            hover:bg-gradient-to-r hover:from-red-500 hover:to-orange-500 hover:text-white
+            transition-all duration-300;
+    }
+
+    .footer-link {
+        @apply text-gray-400 hover:text-white transition-colors inline-block;
+    }
+</style> 
+
+
+<style>
+    .footer-link {
+        @apply flex items-center gap-2 text-gray-400 hover:text-white transition-colors;
+    }
+
+    .link-icon {
+        @apply opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300;
+    }
+
+    .social-link {
+        @apply w-12 h-12 flex items-center justify-center rounded-xl bg-gray-800/50 text-gray-400
+            border border-gray-700 hover:scale-110 hover:text-white hover:border-gray-600
+            transition-all duration-300;
+    }
+</style>
+
+<style>
+    @keyframes dash {
+        to {
+            stroke-dasharray: 280 300;
+        }
+    }
+
+    .animate-dash {
+        animation: dash 2s ease-in-out infinite;
+    }
+
+    .animate-spin-slow {
+        animation: spin 3s linear infinite;
+    }
+
+    /* Add these utility classes to your existing styles */
+    .back-to-top-visible {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+    }
+
+    .loader-hidden {
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+</style>
+
+
+</head>
+
+<body class="font-['Cairo']">
+
+
+    <!-- Navbar -->
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl shadow-sm">
+        <!-- Top Bar -->
+        <div class="bg-gray-900 text-white py-2.5 text-sm">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="flex justify-between items-center">
+                    <!-- Contact Info -->
+                    <div class="flex items-center gap-6">
+                        <a href="mailto:magh.developer@gmail.com"
+                           class="flex items-center gap-2 hover:text-red-400 transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <span class="hidden md:inline">magh.developer@gmail.com</span>
+                        </a>
+                        <div class="h-4 w-px bg-gray-700"></div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span class="hidden md:inline">الرياض، المملكة العربية السعودية</span>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="hover:text-red-400 transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="hover:text-red-400 transition-colors duration-300">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <div class="h-4 w-px bg-gray-700"></div>
+                        <button class="hover:text-red-400 transition-colors duration-300 text-sm">EN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="border-b border-gray-100">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <!-- Logo -->
+                    <a href="/" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white font-bold text-xl">
+                            <img src="http://127.0.0.1:8000/storage/62/conversions/media-libraryQkq779-thumb.webp" alt="" srcset="">
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-900">محمد عبدالغفار</h1>
+                            <p class="text-sm text-gray-600">مطور ويب</p>
+                        </div>
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex items-center gap-8">
+                        <a href="/" class="nav-link">الرئيسية</a>
+                        <a href="/about" class="nav-link">من أنا</a>
+                        <a href="/services" class="nav-link">خدماتي</a>
+                        <a href="/projects" class="nav-link">أعمالي</a>
+                        <a href="/blog" class="nav-link">المدونة</a>
+                        <a href="/contact" class="nav-link">اتصل بي</a>
+
+
+                    <!-- CV Download Button with Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center gap-2 px-6 py-2 rounded-xl
+                                     bg-gradient-to-r from-red-500 to-red-500 text-white
+                                     hover:shadow-lg hover:shadow-red-500/25 transition-all">
+                            <span>السيرة الذاتية</span>
+                            <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform"
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div class="absolute right-0 mt-2 w-48 opacity-0 invisible group-hover:opacity-100
+                                  group-hover:visible transition-all duration-300 transform group-hover:translate-y-0
+                                  translate-y-2">
+                            <div class="bg-gray-800 rounded-xl shadow-xl p-2">
+                                <a href="/cv-ar.pdf" download
+                                   class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-300
+                                          hover:bg-gray-700 hover:text-white transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                    <span>تحميل النسخة العربية</span>
+                                </a>
+                                <a href="/cv-en.pdf" download
+                                   class="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-300
+                                          hover:bg-gray-700 hover:text-white transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                    <span>Download English CV</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-b border-gray-100">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex flex-col gap-2">
+                    <a href="/" class="px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-300">
+                        الرئيسية
+                    </a>
+                    <a href="/about" class="px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-300">
+                        من أنا
+                    </a>
+                    <a href="/services" class="px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-300">
+                        خدماتي
+                    </a>
+                    <a href="/projects" class="px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-300">
+                        أعمالي
+                    </a>
+                    <a href="/blog" class="px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-300">
+                        المدونة
+                    </a>
+                    <a href="/contact" class="px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-300">
+                        اتصل بي
+                    </a>
+                    <div class="pt-2">
+                        <a href="/cv" class="nav-button block text-center">
+                            السيرة الذاتية
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Add margin to body content to account for fixed header -->
+    <div class="mt-[132px]">
+        <!-- Your page content here -->
+
+
+        <!-- Hero Section -->
+        <section class="relative min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0 -z-10">
+                <!-- Gradient Orbs -->
+                <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
+
+                <!-- Grid Pattern -->
+                <div class="absolute inset-0"
+                    style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0); background-size: 40px 40px;">
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 lg:px-8 min-h-screen flex items-center">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-0 items-center">
+                    <!-- Content -->
+                    <div class="order-2 lg:order-1" data-aos="fade-up" data-aos-duration="1000">
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-3 mb-8 opacity-0 animate-slide-right" style="animation-delay: 0.3s;">
+                            <span class="px-4 py-1.5 bg-red-50 text-red-600 rounded-full text-sm font-medium tag-hover">
+                                مطور ويب
+                            </span>
+                            <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-sm font-medium tag-hover">
+                                مصمم UI/UX
+                            </span>
+                            <span class="px-4 py-1.5 bg-green-50 text-green-600 rounded-full text-sm font-medium tag-hover">
+                                خبير تقني
+                            </span>
+                        </div>
+
+                        <!-- Main Title -->
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6 opacity-0 animate-scale" style="animation-delay: 0.5s;">
+                            نحول
+                            <span class="text-transparent bg-clip-text animate-gradient bg-gradient-to-r from-red-600 to-orange-600">
+                                أفكارك
+                            </span>
+                            <br/>
+                            إلى واقع رقمي متكامل
+                        </h1>
+
+                        <!-- Description -->
+                        <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl">
+                            أكثر من 4 عاماً من الخبرة في تطوير وتصميم المواقع والتطبيقات.
+                            نقدم حلولاً تقنية مبتكرة تجمع بين الأداء العالي والتصميم الاستثنائي.
+                        </p>
+
+
+
+                        <!-- Stats Section -->
+                        <div class="grid grid-cols-3 gap-8 mb-12">
+                            <!-- Project Counter -->
+                            <div class="stats-card group">
+                                <div class="relative overflow-hidden bg-white rounded-2xl p-6 transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                                    <!-- Decorative Corner -->
+                                    <div class="absolute top-0 right-0 w-24 h-24 overflow-hidden">
+                                        <div class="absolute transform rotate-45 bg-red-50 w-[141%] h-[141%] -top-[30%] -right-[30%] group-hover:bg-red-100 transition-colors duration-300"></div>
+                                    </div>
+
+                                    <!-- Icon -->
+                                    <div class="relative mb-4">
+                                        <div class="w-16 h-16 rounded-xl bg-red-50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <!-- Counter -->
+                                    <div class="relative">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="counter-value text-4xl font-bold text-gray-900"
+                                                data-target="150"
+                                                data-suffix="+">
+                                                0
+                                            </span>
+                                        </div>
+                                        <p class="text-gray-600 mt-2">مشروع مكتمل</p>
+                                    </div>
+
+                                    <!-- Progress Bar -->
+                                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gray-100">
+                                        <div class="progress-bar h-full w-0 bg-gradient-to-r from-red-600 to-red-400 transition-all duration-1000"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Satisfaction Counter -->
+                            <div class="stats-card group">
+                                <div class="relative overflow-hidden bg-white rounded-2xl p-6 transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                                    <div class="absolute top-0 right-0 w-24 h-24 overflow-hidden">
+                                        <div class="absolute transform rotate-45 bg-green-50 w-[141%] h-[141%] -top-[30%] -right-[30%] group-hover:bg-green-100 transition-colors duration-300"></div>
+                                    </div>
+
+                                    <div class="relative mb-4">
+                                        <div class="w-16 h-16 rounded-xl bg-green-50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="counter-value text-4xl font-bold text-gray-900"
+                                                data-target="98"
+                                                data-suffix="%">
+                                                0
+                                            </span>
+                                        </div>
+                                        <p class="text-gray-600 mt-2">عملاء راضون</p>
+                                    </div>
+
+                                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gray-100">
+                                        <div class="progress-bar h-full w-0 bg-gradient-to-r from-green-600 to-green-400 transition-all duration-1000"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Experience Counter -->
+                            <div class="stats-card group">
+                                <div class="relative overflow-hidden bg-white rounded-2xl p-6 transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                                    <div class="absolute top-0 right-0 w-24 h-24 overflow-hidden">
+                                        <div class="absolute transform rotate-45 bg-blue-50 w-[141%] h-[141%] -top-[30%] -right-[30%] group-hover:bg-blue-100 transition-colors duration-300"></div>
+                                    </div>
+
+                                    <div class="relative mb-4">
+                                        <div class="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="counter-value text-4xl font-bold text-gray-900"
+                                                data-target="4"
+                                                data-suffix="+">
+                                                0
+                                            </span>
+                                        </div>
+                                        <p class="text-gray-600 mt-2">سنوات خبرة</p>
+                                    </div>
+
+                                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gray-100">
+                                        <div class="progress-bar h-full w-0 bg-gradient-to-r from-blue-600 to-blue-400 transition-all duration-1000"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap gap-4">
+                            <a href="/contact"
+                            class="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl
+                                    font-medium transition-all duration-300 hover:shadow-lg hover:shadow-red-500/30
+                                    active:scale-95 flex items-center gap-2 group animate-bounce-slow">
+                                <span>ابدأ مشروعك</span>
+                                <svg class="w-5 h-5 transform group-hover:translate-x-[-4px] transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                            <a href="/projects"
+                            class="px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-xl font-medium
+                                    transition-all duration-300 hover:bg-gray-900 hover:text-white
+                                    active:scale-95 flex items-center gap-2 animate-bounce-slow">
+                                <span>معرض الأعمال</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Image -->
+                    <div class="order-1 lg:order-2 relative" data-aos="fade-left" data-aos-duration="1000">
+                        <!-- Main Image -->
+                        <div class=" animate-bounce-slow relative z-10 bg-white p-4 rounded-2xl shadow-xl animated-background">
+                            <img src="https://via.placeholder.com/1200x675"
+                                alt="Hero Image"
+                                class="rounded-xl w-full"
+                                loading="lazy"
+                                >
+
+                            <!-- Floating Elements -->
+                            <div class="absolute -top-0 -right-0 bg-white p-4 rounded-xl shadow-lg animate-float">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900">جودة عالية</p>
+                                        <p class="text-sm text-gray-600">تصميم احترافي</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="absolute -bottom-0 -left-0 bg-white p-4 rounded-xl shadow-lg animate-float animation-delay-500">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900">أداء متميز</p>
+                                        <p class="text-sm text-gray-600">سرعة فائقة</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Background Elements -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] -z-10">
+                            <div class="absolute inset-0 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full animate-spin-slow"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full animate-spin-slow-reverse"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Services Section -->
+        <!-- Services Section -->
+        <section class="py-24 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0 -z-10">
+                <div class="absolute w-full h-full">
+                    <!-- Grid Pattern -->
+                    <div class="absolute inset-0 opacity-[0.02]"
+                        style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.2) 1px, transparent 0);
+                                background-size: 40px 40px;">
+                    </div>
+                </div>
+                <!-- Gradient Orbs -->
+                <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-red-500/5 to-orange-500/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gradient-to-tr from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="container mx-auto px-4 relative">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                    <span class="text-red-600 font-semibold mb-4 block">خدماتنا الاحترافية</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        حلول تقنية متكاملة
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">
+                            لتطوير أعمالك
+                        </span>
+                    </h2>
+                    <p class="text-gray-600 text-lg">
+                        نقدم خدمات احترافية مبنية على خبرة عميقة في مجال التطوير والبرمجة
+                    </p>
+                </div>
+
+                <!-- Services Grid -->
+                <div class="grid lg:grid-cols-3 gap-8 relative">
+                    <!-- Web Development Card -->
+                    <div class="service-card group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative bg-white p-8 rounded-2xl shadow-lg transition-all duration-500
+                                    hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
+                            <!-- Top Gradient Line -->
+                            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 to-orange-600"></div>
+
+                            <!-- Icon -->
+                            <div class="relative mb-8">
+                                <div class="w-16 h-16 rounded-xl bg-red-50 flex items-center justify-center
+                                        group-hover:scale-110 transition-transform duration-500">
+                                    <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                    </svg>
+                                </div>
+                                <!-- Experience Badge -->
+                                <div class="absolute -top-2 -right-2 bg-red-600 text-white text-sm px-3 py-1 rounded-full
+                                        shadow-lg transform group-hover:scale-110 transition-transform duration-500">
+                                    15+ سنة خبرة
+                                </div>
+                            </div>
+
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900">تطوير المواقع</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                تصميم وتطوير مواقع احترافية عالية الأداء باستخدام أحدث التقنيات والمعايير العالمية.
+                            </p>
+
+                            <!-- Features List -->
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-center gap-3 text-gray-700">
+                                    <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    تصميم متجاوب مع جميع الأجهزة
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700">
+                                    <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    تحسين محركات البحث SEO
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700">
+                                    <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    أداء عالي وسرعة تحميل فائقة
+                                </li>
+                            </ul>
+
+                            <!-- Learn More Link -->
+                            <a href="#" class="inline-flex items-center gap-2 text-red-600 hover:gap-3 transition-all duration-300
+                                            font-medium group-hover:text-red-700">
+                                <span>اكتشف المزيد</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Enterprise Systems Card -->
+                    <div class="service-card group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative bg-white p-8 rounded-2xl shadow-lg transition-all duration-500
+                                    hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
+                            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-cyan-600"></div>
+
+                            <div class="relative mb-8">
+                                <div class="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center
+                                        group-hover:scale-110 transition-transform duration-500">
+                                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="absolute -top-2 -right-2 bg-blue-600 text-white text-sm px-3 py-1 rounded-full
+                                        shadow-lg transform group-hover:scale-110 transition-transform duration-500">
+                                    20+ سنة خبرة
+                                </div>
+                            </div>
+
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900">الأنظمة المحاسبية والإدارية</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                تطوير أنظمة إدارية متكاملة تناسب احتياجات مؤسستك وتساعد في تحسين الكفاءة التشغيلية.
+                            </p>
+
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-center gap-3 text-gray-700">
+                                    <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    إدارة الموارد والمخزون
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700">
+                                    <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    التقارير المالية والمحاسبية
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700">
+                                    <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    إدارة علاقات العملاء
+                                </li>
+                            </ul>
+
+                            <a href="#" class="inline-flex items-center gap-2 text-blue-600 hover:gap-3 transition-all duration-300
+                                            font-medium group-hover:text-blue-700">
+                                <span>اكتشف المزيد</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Apps Card -->
+                    <div class="service-card group" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative bg-white p-8 rounded-2xl shadow-lg transition-all duration-500
+                                    hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
+                            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-600 to-emerald-600"></div>
+
+                            <div class="relative mb-8">
+                                <div class="w-16 h-16 rounded-xl bg-green-50 flex items-center justify-center
+                                        group-hover:scale-110 transition-transform duration-500">
+                                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="absolute -top-2 -right-2 bg-green-600 text-white text-sm px-3 py-1 rounded-full
+                                        shadow-lg transform group-hover:scale-110 transition-transform duration-500">
+                                    15+ سنة خبرة
+                                </div>
+                            </div>
+
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900">تطبيقات الجوال</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                تطوير تطبيقات جوال عصرية لنظامي iOS و Android بأحدث التقنيات وأفضل معايير البرمجة.
+                            </p>
+
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-center gap-3 text-gray-700">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    تطبيقات iOS و Android
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    واجهات مستخدم عصرية
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-700">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    أداء عالي وتحديثات مستمرة
+                                </li>
+                            </ul>
+
+                            <a href="#" class="inline-flex items-center gap-2 text-green-600 hover:gap-3 transition-all duration-300
+                                            font-medium group-hover:text-green-700">
+                                <span>اكتشف المزيد</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Projects Section -->
+        <section class="py-24 bg-gray-50 relative overflow-hidden">
+            <!-- Decorative Background -->
+            <div class="absolute inset-0">
+                <div class="absolute inset-0 bg-gradient-to-b from-white to-transparent"></div>
+                <div class="absolute inset-0"
+                    style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0);
+                            background-size: 40px 40px;">
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 relative">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <span class="text-red-600 font-semibold mb-4 block">معرض الأعمال</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        مشاريع
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">
+                            نفخر بها
+                        </span>
+                    </h2>
+                    <p class="text-gray-600 text-lg">
+                        نماذج من المشاريع التي قمنا بتطويرها لعملائنا في مختلف المجالات
+                    </p>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg">
+                            <!-- Project Image -->
+                            <div class="relative overflow-hidden aspect-[4/3]">
+                                <img src="https://via.placeholder.com/600x450"
+                                    alt="Project 1"
+                                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <!-- Overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <!-- Category Badge -->
+                                <div class="absolute top-4 right-4">
+                                    <span class="bg-white/90 backdrop-blur-sm text-red-600 px-4 py-1.5 rounded-full text-sm font-medium">
+                                        تطبيق ويب
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Project Info -->
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2 text-gray-900">منصة التجارة الإلكترونية</h3>
+                                <p class="text-gray-600 mb-4">
+                                    تطوير منصة متكاملة للتجارة الإلكترونية مع نظام إدارة متقدم
+                                </p>
+
+                                <!-- Technologies Used -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">React.js</span>
+                                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">Node.js</span>
+                                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                                </div>
+
+                                <!-- View Project Link -->
+                                <a href="#" class="inline-flex items-center gap-2 text-red-600 hover:gap-3 transition-all duration-300">
+                                    <span>مشاهدة المشروع</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg">
+                            <div class="relative overflow-hidden aspect-[4/3]">
+                                <img src="https://via.placeholder.com/600x450"
+                                    alt="Project 2"
+                                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div class="absolute top-4 right-4">
+                                    <span class="bg-white/90 backdrop-blur-sm text-blue-600 px-4 py-1.5 rounded-full text-sm font-medium">
+                                        نظام محاسبي
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2 text-gray-900">نظام إدارة المؤسسات</h3>
+                                <p class="text-gray-600 mb-4">
+                                    نظام متكامل لإدارة الموارد والمحاسبة للشركات المتوسطة والكبيرة
+                                </p>
+
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">Laravel</span>
+                                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">Vue.js</span>
+                                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">MySQL</span>
+                                </div>
+
+                                <a href="#" class="inline-flex items-center gap-2 text-blue-600 hover:gap-3 transition-all duration-300">
+                                    <span>مشاهدة المشروع</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="group" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative overflow-hidden rounded-2xl bg-white shadow-lg">
+                            <div class="relative overflow-hidden aspect-[4/3]">
+                                <img src="https://via.placeholder.com/600x450"
+                                    alt="Project 3"
+                                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div class="absolute top-4 right-4">
+                                    <span class="bg-white/90 backdrop-blur-sm text-green-600 px-4 py-1.5 rounded-full text-sm font-medium">
+                                        تطبيق جوال
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2 text-gray-900">تطبيق توصيل الطلبات</h3>
+                                <p class="text-gray-600 mb-4">
+                                    تطبيق متكامل لخدمات التوصيل مع نظام تتبع مباشر
+                                </p>
+
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">React Native</span>
+                                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">Firebase</span>
+                                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm">Node.js</span>
+                                </div>
+
+                                <a href="#" class="inline-flex items-center gap-2 text-green-600 hover:gap-3 transition-all duration-300">
+                                    <span>مشاهدة المشروع</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View All Projects Button -->
+                <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#" class="inline-flex items-center gap-2 bg-gray-900 text-white px-8 py-4 rounded-xl
+                                    hover:bg-gray-800 transition-all duration-300 group">
+                        <span>عرض جميع المشاريع</span>
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+         <!-- Premium Projects Showcase -->
+        <section class="py-32 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0 -z-10">
+                <!-- Premium Grid Pattern -->
+                <div class="absolute inset-0"
+                    style="background-image: linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+                                            linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+                            background-size: 60px 60px;">
+                </div>
+
+                <!-- Gradient Orbs -->
+                <div class="absolute top-0 right-0 w-[1000px] h-[1000px] bg-gradient-to-br from-red-500/5 to-orange-500/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-[1000px] h-[1000px] bg-gradient-to-tr from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="container mx-auto px-4 relative">
+                <!-- Premium Section Header -->
+                <div class="text-center max-w-4xl mx-auto mb-24" data-aos="fade-up">
+                    <div class="inline-block mb-4">
+                        <div class="flex items-center gap-2 text-red-600 bg-red-50 px-4 py-2 rounded-full">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                            <span class="font-semibold">مشاريع مميزة</span>
+                        </div>
+                    </div>
+
+                    <h2 class="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600">
+                            إبداعات تجمع بين
+                        </span>
+                        <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">
+                            الخبرة والابتكار
+                        </span>
+                    </h2>
+
+                    <p class="text-gray-600 text-lg md:text-xl leading-relaxed">
+                        خمسون عاماً من الخبرة في تطوير حلول رقمية متكاملة تجمع بين التصميم الإبداعي والتقنيات المتقدمة
+                    </p>
+                </div>
+
+                <!-- Premium Projects Grid -->
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Featured Project -->
+                    <div class="lg:col-span-2" data-aos="fade-up">
+                        <div class="group relative bg-white rounded-3xl shadow-2xl overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-600 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+
+                            <!-- Project Image with Overlay -->
+                            <div class="relative aspect-[16/9] overflow-hidden">
+                                <img src="https://placeholder.com/1200x675"
+                                    alt="Featured Project"
+                                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+
+                                <!-- Premium Badge -->
+                                <div class="absolute top-6 right-6">
+                                    <div class="bg-white/95 backdrop-blur-sm px-6 py-2 rounded-full shadow-lg">
+                                        <div class="flex items-center gap-2">
+                                            <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                                            </svg>
+                                            <span class="text-gray-900 font-semibold">مشروع مميز</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Project Category -->
+                                <div class="absolute top-6 left-6">
+                                    <div class="bg-red-600 text-white px-6 py-2 rounded-full shadow-lg">
+                                        منصة متكاملة
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Info -->
+                            <div class="p-10">
+                                <div class="flex justify-between items-start mb-6">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-gray-900 mb-3">منصة التجارة الإلكترونية المتقدمة</h3>
+                                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                                            منصة متكاملة للتجارة الإلكترونية تجمع بين التصميم العصري والأداء العالي، مع نظام إدارة متقدم وتجربة مستخدم فريدة.
+                                        </p>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                                            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                                            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Technologies & Features -->
+                                <div class="flex flex-wrap gap-4 mb-8">
+                                    <div class="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full">
+                                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                        </svg>
+                                        <span class="text-gray-700">React.js</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full">
+                                        <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                        </svg>
+                                        <span class="text-gray-700">Node.js</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full">
+                                        <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                        </svg>
+                                        <span class="text-gray-700">GraphQL</span>
+                                    </div>
+                                </div>
+
+                                <!-- Project Stats -->
+                                <div class="grid grid-cols-3 gap-8 p-6 bg-gray-50 rounded-2xl">
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold text-gray-900 mb-1">98%</div>
+                                        <div class="text-gray-600">رضا العملاء</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold text-gray-900 mb-1">+500k</div>
+                                        <div class="text-gray-600">مستخدم نشط</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold text-gray-900 mb-1">4.9</div>
+                                        <div class="text-gray-600">تقييم التطبيق</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regular Projects -->
+                    <!-- [Previous project cards code remains the same] -->
+                </div>
+
+                <!-- Premium CTA -->
+                <div class="text-center mt-16" data-aos="fade-up">
+                    <a href="#" class="inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-orange-600
+                                    text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl
+                                    transition-all duration-300 group">
+                        <span class="text-lg font-medium">استعرض جميع المشاريع</span>
+                        <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section> 
+
+
+
+        <!-- Innovative Projects Showcase -->
+        <section class="py-32 relative overflow-hidden bg-[#0A0A0A]">
+            <!-- Dynamic Background -->
+            <div class="absolute inset-0">
+                <!-- Animated Grid -->
+                <div class="absolute inset-0 opacity-[0.15]"
+                    style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px),
+                                            linear-gradient(to bottom, #ffffff 1px, transparent 1px);
+                            background-size: 40px 40px;">
+                </div>
+
+                <!-- Gradient Spheres -->
+                <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-[120px]"></div>
+            </div>
+
+            <div class="container mx-auto px-4 relative">
+                <!-- Section Header -->
+                <div class="text-center mb-24" data-aos="fade-up">
+                    <div class="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/10 to-orange-500/10
+                                text-red-500 px-6 py-2 rounded-full mb-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                        <span class="font-semibold">معرض الأعمال</span>
+                    </div>
+
+                    <h2 class="text-5xl md:text-7xl font-bold mb-8 text-white">
+                        مشاريع
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
+                            استثنائية
+                        </span>
+                    </h2>
+
+                    <p class="text-gray-400 text-xl max-w-3xl mx-auto">
+                        نقدم حلولاً مبتكرة تجمع بين التصميم الإبداعي والتقنيات المتقدمة
+                    </p>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <!-- Featured Project -->
+                    <div class="md:col-span-2" data-aos="fade-up">
+                        <div class="group relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-1 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-red-500 to-orange-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+
+                            <div class="relative bg-gray-900 rounded-[22px] p-8 h-full">
+                                <!-- Project Header -->
+                                <div class="flex justify-between items-start mb-8">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-500 p-[1px]">
+                                            <div class="w-full h-full rounded-2xl bg-gray-900 flex items-center justify-center">
+                                                <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-2xl font-bold text-white mb-1">منصة التجارة الإلكترونية</h3>
+                                            <p class="text-gray-400">تطوير منصة متكاملة للتجارة الإلكترونية</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex gap-3">
+                                        <a href="#" class="project-action-btn">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="project-action-btn">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Project Image -->
+                                <div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-8">
+                                    <img src="https://via.placeholder.com/1200x675"
+                                        alt="Featured Project"
+                                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+
+                                    <!-- Live Badge -->
+                                    <div class="absolute top-4 right-4">
+                                        <div class="flex items-center gap-2 bg-black/80 backdrop-blur-sm text-white px-4 py-2 rounded-full">
+                                            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                            <span>مباشر</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Project Details -->
+                                <div class="grid grid-cols-3 gap-8">
+                                    <!-- Technologies -->
+                                    <div class="space-y-4">
+                                        <h4 class="text-white font-semibold">التقنيات المستخدمة</h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-badge">React.js</span>
+                                            <span class="tech-badge">Node.js</span>
+                                            <span class="tech-badge">MongoDB</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Features -->
+                                    <div class="space-y-4">
+                                        <h4 class="text-white font-semibold">المميزات</h4>
+                                        <ul class="space-y-2">
+                                            <li class="flex items-center gap-2 text-gray-400">
+                                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                </svg>
+                                                <span>تصميم متجاوب</span>
+                                            </li>
+                                            <li class="flex items-center gap-2 text-gray-400">
+                                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                </svg>
+                                                <span>أداء عالي</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Stats -->
+                                    <div class="space-y-4">
+                                        <h4 class="text-white font-semibold">الإحصائيات</h4>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <div class="text-2xl font-bold text-white">98%</div>
+                                                <div class="text-gray-400 text-sm">رضا العملاء</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-2xl font-bold text-white">500K+</div>
+                                                <div class="text-gray-400 text-sm">مستخدم</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regular Projects -->
+                    <div class="project-card" data-aos="fade-up">
+                        <!-- Project content -->
+                    </div>
+                    <!-- Add more project cards -->
+                </div>
+
+                <!-- View All Projects CTA -->
+                <div class="text-center" data-aos="fade-up">
+                    <a href="#" class="inline-flex items-center gap-3 bg-gradient-to-r from-red-500 to-orange-500
+                                    text-white px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-red-500/25
+                                    transition-all duration-300 group">
+                        <span class="text-lg font-medium">عرض جميع المشاريع</span>
+                        <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+        <!-- Testimonials & Reviews Section -->
+        <section class="py-32 relative overflow-hidden bg-white">
+            <!-- Decorative Background -->
+            <div class="absolute inset-0">
+                <!-- Gradient Orbs -->
+                <div class="absolute top-0 left-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-50 to-purple-50 rounded-full blur-3xl opacity-70"></div>
+                <div class="absolute bottom-0 right-0 w-[800px] h-[800px] bg-gradient-to-tr from-red-50 to-orange-50 rounded-full blur-3xl opacity-70"></div>
+
+                <!-- Grid Pattern -->
+                <div class="absolute inset-0"
+                    style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0);
+                            background-size: 40px 40px;">
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 relative">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                    <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-6 py-2 rounded-full mb-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                        <span class="font-semibold">آراء العملاء</span>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                        ماذا يقول
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">
+                            عملاؤنا عنا
+                        </span>
+                    </h2>
+
+                    <p class="text-gray-600 text-lg">
+                        نفخر بثقة عملائنا وشهاداتهم التي تعكس جودة خدماتنا وتميز أعمالنا
+                    </p>
+                </div>
+
+                <!-- Testimonials Grid -->
+                <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Featured Testimonial -->
+                    <div class="lg:col-span-2" data-aos="fade-up">
+                        <div class="bg-gradient-to-br from-red-500 to-orange-500 p-[1px] rounded-3xl">
+                            <div class="bg-white rounded-3xl p-8 h-full relative">
+                                <!-- Quote Icon -->
+                                <div class="absolute -top-6 right-8">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- Content -->
+                                <div class="mb-8">
+                                    <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                                        "تجربة استثنائية في العمل مع فريق محترف يتميز بالإبداع والدقة في التنفيذ.
+                                        النتائج تجاوزت توقعاتنا وساهمت في نمو أعمالنا بشكل ملحوظ."
+                                    </p>
+
+                                    <!-- Rating -->
+                                    <div class="flex gap-1 mb-6">
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                                        </svg>
+                                        <!-- Repeat 5 times -->
+                                    </div>
+                                </div>
+
+                                <!-- Author -->
+                                <div class="flex items-center gap-4">
+                                    <img src="https://via.placeholder.com/80"
+                                        alt="Client"
+                                        class="w-16 h-16 rounded-full object-cover">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-900">محمد العتيبي</h4>
+                                        <p class="text-gray-600">المدير التنفيذي - شركة التقنية المتقدمة</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Testimonial -->
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 h-full relative overflow-hidden">
+                            <!-- Video Thumbnail -->
+                            <div class="relative rounded-2xl overflow-hidden mb-6 aspect-video">
+                                <img src="https://via.placeholder.com/600x400"
+                                    alt="Video Thumbnail"
+                                    class="w-full h-full object-cover">
+
+                                <!-- Play Button -->
+                                <button class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group">
+                                    <div class="w-16 h-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
+                                        <svg class="w-8 h-8 text-white transform translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <h4 class="text-xl font-semibold text-white mb-2">قصة نجاح مشروعنا</h4>
+                            <p class="text-gray-400 mb-6">شاهد كيف ساهمنا في نجاح مشروع عملائنا</p>
+
+                            <!-- Stats -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <div class="text-2xl font-bold text-white">200%</div>
+                                    <div class="text-gray-400">زيادة في المبيعات</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-white">3x</div>
+                                    <div class="text-gray-400">نمو في العملاء</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- More Testimonials -->
+                    <div class="lg:col-span-3 grid md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="200">
+                        <!-- Testimonial Card -->
+                        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                            <div class="flex gap-1 mb-4">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                                </svg>
+                                <!-- Repeat 5 times -->
+                            </div>
+
+                            <p class="text-gray-700 mb-6">
+                                "خدمة ممتازة وتنفيذ احترافي للمشروع. سعداء جداً بالنتائج."
+                            </p>
+
+                            <div class="flex items-center gap-3">
+                                <img src="https://via.placeholder.com/50"
+                                    alt="Client"
+                                    class="w-10 h-10 rounded-full">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">سارة الأحمد</h5>
+                                    <p class="text-sm text-gray-600">مديرة التسويق</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                            <div class="flex gap-1 mb-4">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                                </svg>
+                                <!-- Repeat 5 times -->
+                            </div>
+
+                            <p class="text-gray-700 mb-6">
+                                "خدمة ممتازة وتنفيذ احترافي للمشروع. سعداء جداً بالنتائج."
+                            </p>
+
+                            <div class="flex items-center gap-3">
+                                <img src="https://via.placeholder.com/50"
+                                    alt="Client"
+                                    class="w-10 h-10 rounded-full">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">سارة الأحمد</h5>
+                                    <p class="text-sm text-gray-600">مديرة التسويق</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                            <div class="flex gap-1 mb-4">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                                </svg>
+                                <!-- Repeat 5 times -->
+                            </div>
+
+                            <p class="text-gray-700 mb-6">
+                                "خدمة ممتازة وتنفيذ احترافي للمشروع. سعداء جداً بالنتائج."
+                            </p>
+
+                            <div class="flex items-center gap-3">
+                                <img src="https://via.placeholder.com/50"
+                                    alt="Client"
+                                    class="w-10 h-10 rounded-full">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">سارة الأحمد</h5>
+                                    <p class="text-sm text-gray-600">مديرة التسويق</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Repeat for other testimonials -->
+                    </div>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="text-center" data-aos="fade-up">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-8">يثق بنا أكثر من 500+ عميل</h3>
+
+                    <div class="flex flex-wrap justify-center items-center gap-12 opacity-70">
+                        <!-- Company Logos -->
+                        <img src="https://placeholder.com/120x40" alt="Company 1" class="h-8">
+                        <img src="https://placeholder.com/120x40" alt="Company 2" class="h-8">
+                        <img src="https://placeholder.com/120x40" alt="Company 3" class="h-8">
+                        <img src="https://placeholder.com/120x40" alt="Company 4" class="h-8">
+                        <img src="https://placeholder.com/120x40" alt="Company 5" class="h-8">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+        <!-- Service Request Section -->
+        <section class="py-32 relative overflow-hidden bg-gray-50">
+            <!-- Decorative Background -->
+            <div class="absolute inset-0">
+                <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-red-50 to-orange-50 rounded-full blur-3xl opacity-60"></div>
+                <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gradient-to-tr from-blue-50 to-purple-50 rounded-full blur-3xl opacity-60"></div>
+            </div>
+
+            <div class="container mx-auto px-4 relative">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Left Content -->
+                    <div class="space-y-12">
+                        <!-- Section Header -->
+                        <div data-aos="fade-up">
+                            <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-6 py-2 rounded-full mb-6">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                <span class="font-semibold">ابدأ مشروعك</span>
+                            </div>
+
+                            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                                جاهز لتحويل
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">
+                                    فكرتك إلى واقع؟
+                                </span>
+                            </h2>
+
+                            <p class="text-gray-600 text-lg leading-relaxed">
+                                دعنا نناقش مشروعك ونقدم لك حلولاً مبتكرة تناسب احتياجاتك وتحقق أهدافك
+                            </p>
+                        </div>
+
+                        <!-- Service Process -->
+                        <div class="space-y-8" data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="text-2xl font-bold text-gray-900">كيف نعمل معاً؟</h3>
+
+                            <div class="space-y-6">
+                                <!-- Step 1 -->
+                                <div class="flex gap-4">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+                                            <span class="text-red-600 font-bold">1</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-2">استشارة مجانية</h4>
+                                        <p class="text-gray-600">نناقش فكرتك ونحدد متطلبات مشروعك بشكل دقيق</p>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2 -->
+                                <div class="flex gap-4">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                                            <span class="text-blue-600 font-bold">2</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-2">خطة العمل</h4>
+                                        <p class="text-gray-600">نقدم خطة عمل تفصيلية مع جدول زمني وتكلفة تقديرية</p>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3 -->
+                                <div class="flex gap-4">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                            <span class="text-green-600 font-bold">3</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-2">التنفيذ والتسليم</h4>
+                                        <p class="text-gray-600">نبدأ العمل ونطلعك على التقدم أولاً بأول حتى التسليم</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Options -->
+                        <div class="flex flex-wrap gap-6" data-aos="fade-up" data-aos-delay="200">
+                            <a href="https://wa.me/YOUR_NUMBER"
+                            class="flex items-center gap-3 bg-green-500 text-white px-6 py-4 rounded-xl hover:bg-green-600 transition-colors">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.761.462 3.482 1.34 5.001l-1.401 5.102c-.054.207.029.425.199.563.17.138.408.167.607.07l5.201-1.432c1.468.814 3.129 1.245 4.844 1.245h.004c5.505 0 9.985-4.479 9.985-9.984 0-2.665-1.039-5.17-2.923-7.054-1.884-1.883-4.389-2.921-7.054-2.921zm0 1.5c4.69 0 8.485 3.794 8.485 8.484 0 4.689-3.795 8.484-8.485 8.484-1.555 0-3.079-.419-4.414-1.213-.152-.091-.339-.115-.51-.063l-3.748 1.032.985-3.584c.074-.271-.015-.563-.241-.742-.949-.742-1.459-1.657-1.459-2.628 0-4.69 3.794-8.484 8.484-8.484z"/>
+                                </svg>
+                                <span>تواصل عبر واتساب</span>
+                            </a>
+
+                            <a href="mailto:your@email.com"
+                            class="flex items-center gap-3 bg-gray-900 text-white px-6 py-4 rounded-xl hover:bg-gray-800 transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                <span>راسلنا عبر البريد</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Content - Contact Form -->
+                    <div data-aos="fade-left">
+                        <div class="bg-white rounded-3xl shadow-xl p-8">
+                            <form class="space-y-6">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">الاسم</label>
+                                        <input type="text"
+                                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-colors">
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">البريد الإلكتروني</label>
+                                        <input type="email"
+                                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-colors">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">نوع الخدمة</label>
+                                    <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-colors">
+                                        <option>تطوير موقع</option>
+                                        <option>تطوير تطبيق</option>
+                                        <option>تطوير نظام</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">تفاصيل المشروع</label>
+                                    <textarea rows="4"
+                                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-colors"></textarea>
+                                </div>
+
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">الميزانية التقريبية</label>
+                                    <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-colors">
+                                        <option>أقل من 5000 ريال</option>
+                                        <option>5000 - 10000 ريال</option>
+                                        <option>10000 - 20000 ريال</option>
+                                        <option>أكثر من 20000 ريال</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit"
+                                        class="w-full bg-gradient-to-r from-red-600 to-orange-600 text-white px-8 py-4 rounded-xl
+                                            hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300">
+                                    إرسال الطلب
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Blog & Knowledge Hub Section -->
+        <section class="py-32 bg-white relative overflow-hidden">
+            <!-- Decorative Background -->
+            <div class="absolute inset-0">
+                <div class="absolute inset-0"
+                    style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0);
+                            background-size: 40px 40px;">
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 relative">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-6 py-2 rounded-full mb-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                        <span class="font-semibold">المدونة</span>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        أحدث المقالات
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">
+                            والمعارف التقنية
+                        </span>
+                    </h2>
+
+                    <p class="text-gray-600 text-lg">
+                        اكتشف أحدث المقالات والنصائح في مجال التطوير والتصميم
+                    </p>
+                </div>
+
+                <!-- Content Categories -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up">
+                    <button class="px-6 py-2 rounded-full bg-red-600 text-white">جميع المقالات</button>
+                    <button class="px-6 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">تطوير الويب</button>
+                    <button class="px-6 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">تصميم UI/UX</button>
+                    <button class="px-6 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">تطوير الأعمال</button>
+                    <button class="px-6 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">نصائح تقنية</button>
+                </div>
+
+                <!-- Featured Article -->
+                <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                    <div class="relative group" data-aos="fade-up">
+                        <div class="relative rounded-3xl overflow-hidden aspect-[16/9]">
+                            <img src="https://via.placeholder.com/800x450"
+                                alt="Featured Article"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent"></div>
+
+                            <!-- Article Info -->
+                            <div class="absolute bottom-0 left-0 right-0 p-8">
+                                <div class="flex items-center gap-4 text-white/80 mb-4">
+                                    <span class="flex items-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                        </svg>
+                                        <span>15 مارس 2024</span>
+                                    </span>
+                                    <span class="flex items-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span>10 دقائق قراءة</span>
+                                    </span>
+                                </div>
+
+                                <h3 class="text-2xl font-bold text-white mb-2">
+                                    أحدث التقنيات في تطوير الويب لعام 2024
+                                </h3>
+
+                                <p class="text-white/80 mb-4">
+                                    استكشف أحدث التقنيات والأدوات التي يجب على كل مطور معرفتها في عام 2024
+                                </p>
+
+                                <a href="#" class="inline-flex items-center gap-2 text-white hover:gap-3 transition-all">
+                                    <span>اقرأ المزيد</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latest Articles -->
+                    <div class="space-y-6" data-aos="fade-up" data-aos-delay="100">
+                        <!-- Article Card -->
+                        <div class="bg-gray-50 rounded-2xl p-6 hover:bg-gray-100 transition-colors">
+                            <div class="flex items-center gap-4 text-gray-600 text-sm mb-3">
+                                <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full">تطوير الويب</span>
+                                <span>8 دقائق قراءة</span>
+                            </div>
+
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">
+                                دليلك الشامل لتحسين أداء مواقع الويب
+                            </h3>
+
+                            <p class="text-gray-600 mb-4">
+                                نصائح وتقنيات عملية لتحسين سرعة وأداء مواقع الويب
+                            </p>
+
+                            <a href="#" class="inline-flex items-center gap-2 text-red-600 hover:gap-3 transition-all">
+                                <span>اقرأ المزيد</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="bg-gray-50 rounded-2xl p-6 hover:bg-gray-100 transition-colors">
+                            <div class="flex items-center gap-4 text-gray-600 text-sm mb-3">
+                                <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full">تطوير الويب</span>
+                                <span>8 دقائق قراءة</span>
+                            </div>
+
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">
+                                دليلك الشامل لتحسين أداء مواقع الويب
+                            </h3>
+
+                            <p class="text-gray-600 mb-4">
+                                نصائح وتقنيات عملية لتحسين سرعة وأداء مواقع الويب
+                            </p>
+
+                            <a href="#" class="inline-flex items-center gap-2 text-red-600 hover:gap-3 transition-all">
+                                <span>اقرأ المزيد</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+
+
+                        <!-- Repeat for more articles -->
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+
+            <!-- Innovative Blog Section -->
+             <section class="py-32 bg-[#0A0A0A] relative overflow-hidden">
+                <!-- Animated Background -->
+                <div class="absolute inset-0">
+                    <!-- Grid Pattern -->
+                    <div class="absolute inset-0 opacity-[0.05]"
+                        style="background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+                                background-size: 30px 30px;">
+                    </div>
+
+                    <!-- Gradient Orbs -->
+                    <div class="absolute top-0 right-0 w-[1000px] h-[1000px] bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-full blur-[120px]"></div>
+                    <div class="absolute bottom-0 left-0 w-[1000px] h-[1000px] bg-gradient-to-tr from-blue-500/10 to-purple-500/10 rounded-full blur-[120px]"></div>
+                </div>
+
+                <div class="container mx-auto px-4 relative">
+                    <!-- Section Header -->
+                    <div class="text-center mb-20" data-aos="fade-up">
+                        <div class="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/10 to-orange-500/10
+                                    text-red-500 px-6 py-2 rounded-full mb-6">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                            </svg>
+                            <span class="font-semibold">المدونة التقنية</span>
+                        </div>
+
+                        <h2 class="text-5xl md:text-6xl font-bold mb-8 text-white">
+                            استكشف عالم
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
+                                التطوير والتصميم
+                            </span>
+                        </h2>
+                    </div>
+
+                    <!-- Featured Categories Slider -->
+                    <div class="relative mb-16" data-aos="fade-up">
+                        <div class="flex overflow-x-auto pb-4 hide-scrollbar gap-4">
+                            <button class="category-btn active ">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                <span>تطوير الويب</span>
+                            </button>
+                            <button class="category-btn">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                </svg>
+                                <span>تطبيقات الموبايل</span>
+                            </button>
+                            <!-- Add more categories -->
+                        </div>
+                    </div>
+
+                    <!-- Blog Grid -->
+                    <div class="grid lg:grid-cols-12 gap-8 mb-16">
+                        <!-- Featured Article -->
+                        <div class="lg:col-span-8" data-aos="fade-up">
+                            <div class="group relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-1">
+                                <div class="relative bg-gray-900 rounded-[22px] overflow-hidden">
+                                    <!-- Article Image -->
+                                    <div class="aspect-[16/9] overflow-hidden">
+                                        <img src="https://placeholder.com/800x450"
+                                            alt="Featured Article"
+                                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                    </div>
+
+                                    <!-- Article Content -->
+                                    <div class="p-8">
+                                        <!-- Tags -->
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-4 py-1 rounded-full bg-red-500/10 text-red-500 text-sm">
+                                                تطوير الويب
+                                            </span>
+                                            <span class="px-4 py-1 rounded-full bg-blue-500/10 text-blue-500 text-sm">
+                                                React.js
+                                            </span>
+
+                                        </div>
+
+                                        <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-red-500 transition-colors">
+                                            كيف تبني تطبيقات ويب حديثة باستخدام React.js
+                                        </h3>
+
+                                        <p class="text-gray-400 mb-6 line-clamp-2">
+                                            دليل شامل لبناء تطبيقات ويب حديثة وسريعة باستخدام React.js مع أفضل الممارسات والتقنيات
+                                        </p>
+
+                                        <!-- Article Meta -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center gap-4">
+                                                <img src="https://via.placeholder.com/40"
+                                                    alt="Author"
+                                                    class="w-10 h-10 rounded-full">
+                                                <div>
+                                                    <h4 class="text-white font-medium">محمد عبدالغفار</h4>
+                                                    <p class="text-gray-500 text-sm">15 مارس 2024</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-4 text-gray-400">
+                                                <span class="flex items-center gap-2">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                    </svg>
+                                                    <span>10 دقائق</span>
+                                                </span>
+                                                <span class="flex items-center gap-2">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                    </svg>
+                                                    <span>1.2K</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trending Articles -->
+                        <div class="lg:col-span-4 space-y-8" data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="text-xl font-bold text-white mb-6">المقالات الرائجة</h3>
+
+                            <!-- Trending Article Card -->
+                            <div class="group bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-1">
+                                <div class="bg-gray-900 rounded-xl p-4">
+                                    <div class="flex items-start gap-4">
+                                        <img src="https://placeholder.com/100"
+                                            alt="Article Thumbnail"
+                                            class="w-24 h-24 rounded-lg object-cover">
+                                        <div>
+                                            <span class="text-red-500 text-sm">تطوير الويب</span>
+                                            <h4 class="text-white font-medium mb-2 group-hover:text-red-500 transition-colors">
+                                                أساسيات تحسين محركات البحث
+                                            </h4>
+                                            <div class="flex items-center gap-4 text-gray-400 text-sm">
+                                                <span>8 دقائق</span>
+                                                <span>850 مشاهدة</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Trending Article Card -->
+                            <div class="group bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-1">
+                                <div class="bg-gray-900 rounded-xl p-4">
+                                    <div class="flex items-start gap-4">
+                                        <img src="https://placeholder.com/100"
+                                            alt="Article Thumbnail"
+                                            class="w-24 h-24 rounded-lg object-cover">
+                                        <div>
+                                            <span class="text-red-500 text-sm">تطوير الويب</span>
+                                            <h4 class="text-white font-medium mb-2 group-hover:text-red-500 transition-colors">
+                                                أساسيات تحسين محركات البحث
+                                            </h4>
+                                            <div class="flex items-center gap-4 text-gray-400 text-sm">
+                                                <span>8 دقائق</span>
+                                                <span>850 مشاهدة</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Repeat for more trending articles -->
+                        </div>
+                    </div>
+
+                    <!-- Latest Articles Grid -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up">
+                        <!-- Article Card -->
+                        <div class="group bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-1">
+                            <div class="bg-gray-900 rounded-[22px] overflow-hidden">
+                                <div class="aspect-video overflow-hidden">
+                                    <img src="https://via.placeholder.com/400x300"
+                                        alt="Article"
+                                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                </div>
+                                <div class="p-6">
+                                    <span class="text-red-500 text-sm">تطوير الويب</span>
+                                    <h3 class="text-xl font-bold text-white mb-4 group-hover:text-red-500 transition-colors">
+                                        دليل كامل لتطوير واجهات المستخدم
+                                    </h3>
+                                    <p class="text-gray-400 mb-4 line-clamp-2">
+                                        تعرف على أحدث التقنيات والأدوات المستخدمة في تطوير واجهات المستخدم
+                                    </p>
+                                    <div class="flex items-center justify-between text-sm text-gray-400">
+                                        <span>15 مارس 2024</span>
+                                        <span>5 دقائق قراءة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-1">
+                            <div class="bg-gray-900 rounded-[22px] overflow-hidden">
+                                <div class="aspect-video overflow-hidden">
+                                    <img src="https://via.placeholder.com/400x300"
+                                        alt="Article"
+                                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                </div>
+                                <div class="p-6">
+                                    <span class="text-red-500 text-sm">تطوير الويب</span>
+                                    <h3 class="text-xl font-bold text-white mb-4 group-hover:text-red-500 transition-colors">
+                                        دليل كامل لتطوير واجهات المستخدم
+                                    </h3>
+                                    <p class="text-gray-400 mb-4 line-clamp-2">
+                                        تعرف على أحدث التقنيات والأدوات المستخدمة في تطوير واجهات المستخدم
+                                    </p>
+                                    <div class="flex items-center justify-between text-sm text-gray-400">
+                                        <span>15 مارس 2024</span>
+                                        <span>5 دقائق قراءة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-1">
+                            <div class="bg-gray-900 rounded-[22px] overflow-hidden">
+                                <div class="aspect-video overflow-hidden">
+                                    <img src="https://via.placeholder.com/400x300"
+                                        alt="Article"
+                                        class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                </div>
+                                <div class="p-6">
+                                    <span class="text-red-500 text-sm">تطوير الويب</span>
+                                    <h3 class="text-xl font-bold text-white mb-4 group-hover:text-red-500 transition-colors">
+                                        دليل كامل لتطوير واجهات المستخدم
+                                    </h3>
+                                    <p class="text-gray-400 mb-4 line-clamp-2">
+                                        تعرف على أحدث التقنيات والأدوات المستخدمة في تطوير واجهات المستخدم
+                                    </p>
+                                    <div class="flex items-center justify-between text-sm text-gray-400">
+                                        <span>15 مارس 2024</span>
+                                        <span>5 دقائق قراءة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Repeat for more articles -->
+                    </div>
+
+
+                </div>
+            </section>
+
+
+             <!-- Contact & Connect Section -->
+            <section class="py-32 bg-[#0A0A0A] relative overflow-hidden">
+                <!-- Animated Background -->
+                <div class="absolute inset-0">
+                    <div class="absolute inset-0 opacity-[0.03]"
+                        style="background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+                                background-size: 30px 30px;">
+                    </div>
+                    <!-- Gradient Effects -->
+                    <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-full blur-[120px]"></div>
+                    <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gradient-to-tr from-blue-500/10 to-purple-500/10 rounded-full blur-[120px]"></div>
+                </div>
+
+                <div class="container mx-auto px-4 relative">
+                    <!-- Main Grid -->
+                    <div class="grid lg:grid-cols-2 gap-16 items-start">
+                        <!-- Left Column - Contact Info -->
+                        <div class="space-y-16">
+                            <!-- Section Header -->
+                            <div data-aos="fade-up">
+                                <div class="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/10 to-orange-500/10
+                                            text-red-500 px-6 py-2 rounded-full mb-6">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                    <span class="font-semibold">تواصل معنا</span>
+                                </div>
+
+                                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+                                    دعنا نناقش
+                                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
+                                        مشروعك القادم
+                                    </span>
+                                </h2>
+
+                                <p class=" text-lg text-white">
+                                    نحن هنا لمساعدتك في تحويل أفكارك إلى واقع رقمي متكامل
+                                </p>
+                            </div>
+
+                            <!-- Contact Cards -->
+                            <div class="grid sm:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="100">
+                                <!-- Direct Contact -->
+                                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-1 group">
+                                    <div class="bg-gray-900 rounded-[22px] p-6 h-full">
+                                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 flex items-center justify-center mb-4
+                                                group-hover:scale-110 transition-transform">
+                                            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-white mb-2">اتصل بنا مباشرة</h3>
+                                        <p class="text-gray-400 mb-4">متواجدون للرد على استفساراتك</p>
+                                        <a href="tel:+966508734247" class="text-red-500 hover:text-red-400 transition-colors">
+                                            +966508734247
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Email Contact -->
+                                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-1 group">
+                                    <div class="bg-gray-900 rounded-[22px] p-6 h-full">
+                                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-4
+                                                group-hover:scale-110 transition-transform">
+                                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-white mb-2">راسلنا عبر البريد</h3>
+                                        <p class="text-gray-400 mb-4">نرد خلال 24 ساعة</p>
+                                        <a href="mailto:magh.developer@gmail.com" class="text-blue-500 hover:text-blue-400 transition-colors">
+                                            magh.developer@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Social Links -->
+                            <div data-aos="fade-up" data-aos-delay="200">
+                                <h3 class="text-xl font-bold text-white mb-6">تابعنا على منصات التواصل</h3>
+                                <div class="flex flex-wrap gap-4">
+                                    <a href="#" class="social-link">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                        </svg>
+                                        <span>Twitter</span>
+                                    </a>
+                                    <a href="#" class="social-link">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                        </svg>
+                                        <span>GitHub</span>
+                                    </a>
+                                    <a href="#" class="social-link">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                        </svg>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column - Contact Form -->
+                        <div data-aos="fade-left">
+                            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-1">
+                                <form class="bg-gray-900 rounded-[22px] p-8">
+                                    <div class="space-y-6">
+                                        <!-- Name Input -->
+                                        <div>
+                                            <label class="block text-white font-medium mb-2">الاسم</label>
+                                            <input type="text"
+                                                class="w-full bg-gray-800 border-0 rounded-xl px-6 py-4 text-white
+                                                        focus:ring-2 focus:ring-red-500 transition-all">
+                                        </div>
+
+                                        <!-- Email Input -->
+                                        <div>
+                                            <label class="block text-white font-medium mb-2">البريد الإلكتروني</label>
+                                            <input type="email"
+                                                class="w-full bg-gray-800 border-0 rounded-xl px-6 py-4 text-white
+                                                        focus:ring-2 focus:ring-red-500 transition-all">
+                                        </div>
+
+                                        <!-- Service Selection -->
+                                        <div>
+                                            <label class="block text-white font-medium mb-2">نوع الخدمة</label>
+                                            <select class="w-full bg-gray-800 border-0 rounded-xl px-6 py-4 text-white
+                                                        focus:ring-2 focus:ring-red-500 transition-all">
+                                                <option>تطوير موقع</option>
+                                                <option>تطوير تطبيق</option>
+                                                <option>تطوير نظام</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Budget Range -->
+                                        <div>
+                                            <label class="block text-white font-medium mb-2">الميزانية التقريبية</label>
+                                            <select class="w-full bg-gray-800 border-0 rounded-xl px-6 py-4 text-white
+                                                        focus:ring-2 focus:ring-red-500 transition-all">
+                                                <option>أقل من 5000 ريال</option>
+                                                <option>5000 - 10000 ريال</option>
+                                                <option>10000 - 20000 ريال</option>
+                                                <option>أكثر من 20000 ريال</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Message Input -->
+                                        <div>
+                                            <label class="block text-white font-medium mb-2">تفاصيل المشروع</label>
+                                            <textarea rows="4"
+                                                    class="w-full bg-gray-800 border-0 rounded-xl px-6 py-4 text-white
+                                                            focus:ring-2 focus:ring-red-500 transition-all"></textarea>
+                                        </div>
+
+                                        <!-- Submit Button -->
+                                        <button type="submit"
+                                                class="w-full bg-gradient-to-r from-red-500 to-orange-500 text-white
+                                                    px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-red-500/25
+                                                    transition-all duration-300">
+                                            إرسال الطلب
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        
+
+
+
+
+
+
+            <!-- Premium Footer Section -->
+             <footer class="pt-32 pb-8 bg-[#0A0A0A] relative overflow-hidden">
+                <!-- Decorative Background -->
+                <div class="absolute inset-0">
+                    <div class="absolute inset-0 opacity-[0.03]"
+                        style="background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+                                background-size: 30px 30px;">
+                    </div>
+                    <!-- Gradient Effects -->
+                    <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-full blur-[120px]"></div>
+                    <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gradient-to-tr from-blue-500/10 to-purple-500/10 rounded-full blur-[120px]"></div>
+                </div>
+
+                <div class="container mx-auto px-4 relative">
+                    <!-- Main Footer Content -->
+                    <div class="grid lg:grid-cols-12 gap-16 mb-16">
+                        <!-- Brand Column -->
+                        <div class="lg:col-span-4">
+                            <!-- Logo -->
+                            <div class="mb-8">
+                                <h2 class="text-3xl font-bold text-white">محمد عبدالغفار</h2>
+                                <p class="text-gray-400 mt-2">مطور ويب</p>
+                            </div>
+
+                            <!-- About Text -->
+                            <p class="text-gray-400 mb-8 leading-relaxed">
+                                نقدم حلولاً تقنية مبتكرة تجمع بين التصميم الإبداعي والأداء العالي. خبرة تمتد لأكثر من 4 عاماً في تطوير المواقع والتطبيقات.
+                            </p>
+
+                            <!-- Social Links -->
+                            <div class="flex gap-4">
+                                <a href="#" class="footer-social-link">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="footer-social-link">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="footer-social-link">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Quick Links -->
+                        <div class="lg:col-span-2">
+                            <h3 class="text-white font-bold mb-6">روابط سريعة</h3>
+                            <ul class="space-y-4">
+                                <li><a href="#" class="footer-link">الرئيسية</a></li>
+                                <li><a href="#" class="footer-link">خدماتنا</a></li>
+                                <li><a href="#" class="footer-link">مشاريعنا</a></li>
+                                <li><a href="#" class="footer-link">المدونة</a></li>
+                                <li><a href="#" class="footer-link">اتصل بنا</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Services -->
+                        <div class="lg:col-span-2">
+                            <h3 class="text-white font-bold mb-6">خدماتنا</h3>
+                            <ul class="space-y-4">
+                                <li><a href="#" class="footer-link">تطوير المواقع</a></li>
+                                <li><a href="#" class="footer-link">تطوير التطبيقات</a></li>
+                                <li><a href="#" class="footer-link">تصميم UI/UX</a></li>
+                                <li><a href="#" class="footer-link">الأنظمة المخصصة</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Newsletter -->
+                        <div class="lg:col-span-4">
+                            <h3 class="text-white font-bold mb-6">النشرة البريدية</h3>
+                            <p class="text-gray-400 mb-6">
+                                اشترك في نشرتنا البريدية للحصول على آخر الأخبار والتحديثات
+                            </p>
+                            <form class="flex gap-2">
+                                <input type="email"
+                                    placeholder="بريدك الإلكتروني"
+                                    class="flex-1 bg-gray-800 border-0 rounded-xl px-6 py-4 text-white
+                                            focus:ring-2 focus:ring-red-500 transition-all">
+                                <button type="submit"
+                                        class="bg-gradient-to-r from-red-500 to-orange-500 text-white px-6 py-4
+                                            rounded-xl hover:shadow-lg hover:shadow-red-500/25 transition-all">
+                                    اشتراك
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-8"></div>
+
+                    <!-- Bottom Footer -->
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm">
+                        <div>
+                            © 2024 محمد عبدالغفار. جميع الحقوق محفوظة
+                        </div>
+                        <div class="flex gap-6">
+                            <a href="#" class="hover:text-white transition-colors">سياسة الخصوصية</a>
+                            <a href="#" class="hover:text-white transition-colors">الشروط والأحكام</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+       
+
+
+
+
+            <!-- Innovative Footer Section -->
+            <footer class="relative pt-32 pb-8 bg-gradient-to-b from-gray-900 via-gray-900 to-black overflow-hidden">
+                <!-- Animated Background Elements -->
+                <div class="absolute inset-0 z-0">
+                    <!-- Gradient Orbs -->
+                    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full blur-[100px] opacity-60"></div>
+                    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-[100px] opacity-60"></div>
+
+                    <!-- Grid Pattern -->
+                    <div class="absolute inset-0"
+                        style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+                                background-size: 40px 40px;">
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="container mx-auto px-4 relative z-10">
+                    <!-- Top Section -->
+                    <div class="flex flex-col lg:flex-row justify-between gap-16 mb-20">
+                        <!-- Brand Section -->
+                        <div class="lg:w-1/3">
+                            <!-- Logo Area -->
+                            <div class="bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-2xl mb-8">
+                                <h2 class="text-3xl font-bold text-white mb-2">محمد عبدالغفار</h2>
+                                <div class="flex items-center gap-2 text-gray-400">
+                                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                    <span>متاح للمشاريع الجديدة</span>
+                                </div>
+                            </div>
+
+                            <!-- Contact Info -->
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4 group">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/10 to-orange-500/10
+                                            flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-sm">البريد الإلكتروني</p>
+                                        <a href="mailto:magh.developer@gmail.com"
+                                        class="text-white hover:text-red-500 transition-colors">
+                                            magh.developer@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4 group">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10
+                                            flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-sm">رقم الهاتف</p>
+                                        <a href="tel:+966508734247"
+                                        class="text-white hover:text-blue-500 transition-colors">
+                                            +966508734247
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Links Sections -->
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:w-2/3">
+                            <!-- Services Links -->
+                            <div class="footer-links-group">
+                                <h3 class="text-white font-bold mb-6 relative inline-block">
+                                    خدماتنا
+                                    <div class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
+                                </h3>
+                                <ul class="space-y-4">
+                                    <li>
+                                        <a href="#" class="footer-link group text-white ">
+                                            <span class="link-icon">→</span>
+                                            <span>تطوير المواقع</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="footer-link group text-white ">
+                                            <span class="link-icon">→</span>
+                                            <span>تطوير التطبيقات</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="footer-link group text-white ">
+                                            <span class="link-icon">→</span>
+                                            <span>تصميم UI/UX</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="footer-link group text-white ">
+                                            <span class="link-icon">→</span>
+                                            <span>الأنظمة المخصصة</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Company Links -->
+                            <div class="footer-links-group">
+                                <h3 class="text-white font-bold mb-6 relative inline-block">
+                                    روابط سريعة
+                                    <div class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+                                </h3>
+                                <ul class="space-y-4">
+                                    <li>
+                                        <a href="#" class="footer-link group text-white ">
+                                            <span class="link-icon">→</span>
+                                            <span>من نحن</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="footer-link group text-white ">
+                                            <span class="link-icon">→</span>
+                                            <span>مشاريعنا</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="footer-link group text-white ">
+                                            <span class="link-icon">→</span>
+                                            <span>المدونة</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="footer-link group text-white ">
+                                            <span class="link-icon">→</span>
+                                            <span>اتصل بنا</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Newsletter -->
+                            <div class="footer-links-group">
+                                <h3 class="text-white font-bold mb-6 relative inline-block">
+                                    النشرة البريدية
+                                    <div class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
+                                </h3>
+                                <p class="text-gray-400 mb-6">
+                                    اشترك للحصول على آخر التحديثات والعروض
+                                </p>
+                                <form class="space-y-4">
+                                    <div class="relative">
+                                        <input type="email"
+                                            placeholder="بريدك الإلكتروني"
+                                            class="w-full bg-gray-800/50 border border-gray-700 rounded-xl px-6 py-4 text-white
+                                                    placeholder-gray-500 focus:outline-none focus:border-purple-500
+                                                    focus:ring-2 focus:ring-purple-500/20 transition-all">
+                                    </div>
+                                    <button type="submit"
+                                            class="w-full bg-gradient-to-r from-red-500 to-orange-500 text-white
+                                                rounded-xl px-6 py-4 hover:shadow-lg hover:shadow-red-500/25
+                                                transition-all duration-300 transform hover:-translate-y-1">
+                                        اشتراك
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-12">
+                        <a href="#" class="social-link text-white ">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link text-white ">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link text-white">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Bottom Bar -->
+                    <div class="relative">
+                        <!-- Gradient Line -->
+                        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
+
+                        <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                            <p class="text-gray-400 text-sm">
+                                © 2024 محمد عبدالغفار. جميع الحقوق محفوظة
+                            </p>
+                            <div class="flex gap-6">
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">سياسة الخصوصية</a>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">الشروط والأحكام</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+
+
+    </div>
+
+
+        <!-- Back to Top Button & Page Loader -->
+        <!-- Add this right after the footer -->
+
+        <!-- Smooth Loading Overlay -->
+         <!-- <div id="page-loader" class="fixed inset-0 z-[9999] bg-gray-900 transition-opacity duration-700">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="relative"> 
+                    <div class="w-24 h-24 relative animate-spin-slow">
+                        <svg class="w-full h-full" viewBox="0 0 100 100">
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color: #ef4444"/>
+                                    <stop offset="100%" style="stop-color: #f97316"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="45" stroke="url(#gradient)" stroke-width="8" fill="none"
+                                    stroke-dasharray="180 300" class="animate-dash"/>
+                        </svg> 
+                        <div class="absolute inset-0 flex items-center justify-center text-2xl font-bold text-white">
+                            م
+                        </div>
+                    </div> 
+                    <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-max">
+                        <div class="flex items-center gap-2 text-white/80">
+                            <span class="text-sm tracking-wider">جاري التحميل</span>
+                            <div class="flex gap-1">
+                                <span class="w-1 h-1 bg-white/80 rounded-full animate-bounce" style="animation-delay: 0s;"></span>
+                                <span class="w-1 h-1 bg-white/80 rounded-full animate-bounce" style="animation-delay: 0.2s;"></span>
+                                <span class="w-1 h-1 bg-white/80 rounded-full animate-bounce" style="animation-delay: 0.4s;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Back to Top Button -->
+        <button id="back-to-top"
+                class="fixed bottom-8 right-8 z-50 opacity-0 invisible translate-y-4
+                    bg-gradient-to-r from-red-600 to-orange-600 text-white
+                    w-12 h-12 rounded-xl shadow-lg hover:shadow-red-500/25
+                    flex items-center justify-center
+                    transition-all duration-300 transform hover:scale-110"
+                aria-label="Back to Top">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+            </svg>
+        </button>
+
+
+
+
+<!-- Modals Container -->
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out',
+        once: false, // تغيير إلى false للسماح بتكرار الحركات
+        offset: 50,
+        delay: 100,
+        disable: 'mobile', // تعطيل على الموبايل إذا أردت
+        anchorPlacement: 'top-bottom',
+        disable: function() {
+            return window.innerWidth < 768; // تعطيل على الشاشات الصغيرة
+        }
+    });
+
+    // إضافة تحديث AOS عند تحميل الصور
+    window.addEventListener('load', () => {
+        AOS.refresh();
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Page Loader
+        // const loader = document.getElementById('page-loader');
+        // window.addEventListener('load', () => {
+        //     setTimeout(() => {
+        //         loader.classList.add('loader-hidden');
+        //     }, 1000);
+        // });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('back-to-top');
+
+        const toggleBackToTop = () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('back-to-top-visible');
+            } else {
+                backToTop.classList.remove('back-to-top-visible');
+            }
+        };
+
+        window.addEventListener('scroll', toggleBackToTop);
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Optional: Add scroll progress indicator
+        const scrollProgress = document.createElement('div');
+        scrollProgress.className = 'fixed top-0 left-0 right-0 h-1 z-50 bg-gradient-to-r from-red-600 to-orange-600 transform scale-x-0 origin-left transition-transform duration-300';
+        document.body.appendChild(scrollProgress);
+
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY) / (document.documentElement.scrollHeight - window.innerHeight);
+            scrollProgress.style.transform = `scaleX(${scrollPercent})`;
+        });
+    });
+</script> 
+
+<script>
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            mobileMenu.classList.add('hidden');
+        }
+    });
+</script>
+
+
+<script>
+    // Counter Animation
+    document.addEventListener('DOMContentLoaded', () => {
+        const counters = document.querySelectorAll('.number');
+        const speed = 200;
+
+        const animateCounter = (counter) => {
+            const target = +counter.dataset.target;
+            let count = 0;
+
+            const updateCount = () => {
+                const increment = target / speed;
+                if (count < target) {
+                    count += increment;
+                    counter.innerText = Math.ceil(count);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        };
+
+
+        // Intersection Observer for counters
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => observer.observe(counter));
+
+
+            // إضافة تأثيرات ظهور العناصر
+        const animateElements = () => {
+            const elements = document.querySelectorAll('.animate-slide-right, .animate-slide-left, .animate-scale');
+            elements.forEach(element => {
+                element.style.opacity = '1';
+            });
+        };
+        const parallaxElements = document.querySelectorAll('.parallax');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            parallaxElements.forEach(element => {
+                const speed = element.dataset.speed || 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // تأثير تتبع المؤشر للعناصر
+        const cards = document.querySelectorAll('.stats-item');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                card.style.transform =
+                    `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'none';
+            });
+        });
+
+        // تشغيل التأثيرات
+        setTimeout(animateElements, 100);
+
+
+
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const counters = document.querySelectorAll('.counter-value');
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.dataset.target);
+                    const suffix = counter.dataset.suffix || '';
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        const increment = target / 50;
+                        if (current < target) {
+                            current += increment;
+                            counter.textContent = `${Math.ceil(current)}${suffix}`;
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = `${target}${suffix}`;
+                        }
+                    };
+
+                    updateCounter();
+                    observer.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => observer.observe(counter));
+    });
+</script>
+
+
+
+</body>
+</html>
